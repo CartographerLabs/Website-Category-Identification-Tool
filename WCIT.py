@@ -17,7 +17,7 @@ class BaseDetector:
 
     def __init__(self, website, config_file_location):
         '''
-        Constructor
+        Constructor. 
         :param website:
         :param config_file_location:
         '''

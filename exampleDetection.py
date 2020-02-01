@@ -1,4 +1,4 @@
-from TextInWebsiteDetector import BaseDetector
+from WCIT import BaseDetector
 from Website import Website
 
 my_website = Website("http://www.bbc.com")
