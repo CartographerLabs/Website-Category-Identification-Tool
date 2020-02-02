@@ -105,22 +105,28 @@ class Identifier:
             self.threshold_for_length = data['body_length_threshold']
             self.keyword_and_threshold = data['keyword_and_threshold']
 
-    def has_detected(self):
+    def has_met_criteria(self):
         '''
         Is used to identify if the provided website meets the specification of the provided config.
         :return: boolean on if website identified with config.
         '''
+
+        # Sets if the URL is in the whitelist o blacklist
         is_blacklisted = self._is_website_in_hardcoded_blacklist()
         is_whitelisted = self._is_website_in_hardcoded_whitelist()
 
+        # Checks if the body length is in the threshold range
         length_of_body = self._get_length_of_body()
 
         min_body_length = self.threshold_for_length["min"]
         max_body_length = self.threshold_for_length["max"]
 
+        # If N/A is provided then it should set the max value to the maximum size of
+        # an int (Now there is an edge case here where the size of the body is bigger than this),
+        # and the min value to 0.
         if max_body_length == "n/a":
             max_body_length = sys.maxsize
-            
+
         if min_body_length == "n/a":
             min_body_length = 0
 
@@ -141,12 +147,12 @@ class Identifier:
                 break
 
         # Returns on if the website has been identified with the descriptors in the config
-        has_this_website_been_detected = False
+        fits_criteria = False
         if is_whitelisted:
-            has_this_website_been_detected = True
+            fits_criteria = True
         elif is_blacklisted:
-            has_this_website_been_detected = False
+            fits_criteria = False
         elif is_higher_than_keyword_threshold or in_body_length_threshold:
-            has_this_website_been_detected = True
+            fits_criteria = True
 
-        return has_this_website_been_detected
+        return fits_criteria
