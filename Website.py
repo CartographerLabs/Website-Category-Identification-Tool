@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 class Website:
     '''
     This class is used to create an instance of a website. Having values such as url, titles, and content.
+
+    Note: Somw websites do not allow scraping and so this class will fail to pick up any text on them.
     '''
     website_url = ''
     website_title = ''

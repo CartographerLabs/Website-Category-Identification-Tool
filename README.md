@@ -2,8 +2,7 @@
 This is a quick script created in Python that can be provided with a JSON configuration to identify websites that fit a specific criteria. Currently this criteria is broken down into several categories:
 - The URL is in a whitelist
 - The URL is not in a blacklist
-- The URL's content includes a keyword (e.g. 'news','cooking' or 'sport') more than a given threshold of times. 
-- The website's body length is within a given character length range (e.g. between 0 and 1000, or above 7000)
+- The URL's content includes a keyword (e.g. 'news','cooking' or 'sport') more than a given threshold of times and the website's body length is within a given character length range (e.g. between 0 and 1000, or above 7000)
 
 ## Installation
 All requirements are stored in the requirements.txt file. 
@@ -14,7 +13,7 @@ pip install -r requirements.txt
 ## Usage 
 The below example details how the website ``http://www.bbc.com`` is compared against a configuration used to identify news websites. 
 
-Two objects are required: a ```Website``` object - which is used to store information about a given website (e.g. URL, body text, titles, etc), and an ```Identifier``` object - which is provided with a ```Website``` and a criteria (taking the form of a JSON configuration) and has an ```.is_match()``` method which returns ```True``` if the website meets the criteria of the config or ```False``` if it does not. 
+Two objects are required: a ```Website``` object - which is used to store information about a given website (e.g. URL, body text, titles, etc), and an ```Identifier``` object - which is provided with a ```Website``` and a criteria (taking the form of a JSON configuration) and has an ```.is_match()``` method which returns ```True``` if the website meets the criteria of the config or ```False``` if it does not. If any of the above criteria match (Whietlist, Blasklist, or keyword amount **and** length range) then a match will be True.
 
 ```python
 from CategoryIdentifier import Identifier
@@ -33,7 +32,7 @@ Example configuration:
 ```json
 {
   "keyword_and_threshold": {
-    "news": 7
+    "news": 8
   },
   "white_listed_websites": [
     "news.yahoo.com",
@@ -59,10 +58,13 @@ Example configuration:
   ],
   "black_listed_websites": [
     "github.com",
-    "bristol.ac.uk"
+    "bristol.ac.uk",
+    "twitter.com",
+    "t.co",
+    "facebook.com"
   ],
   "body_length_threshold": {
-    "min": 7000,
+    "min": 1000,
     "max": "n/a"
   }
 }
