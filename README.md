@@ -31,7 +31,7 @@ Example configuration:
 
 ```json
 {
-  "keyword_and_threshold": {
+  "keywords_and_thresholds": {
     "news": 8
   },
   "white_listed_websites": [

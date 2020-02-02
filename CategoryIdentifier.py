@@ -14,7 +14,7 @@ class Identifier:
     _website = Website
     _blacklisted = []
     _whitelisted = []
-    _keyword_and_threshold = {}
+    _keywords_and_thresholds = {}
     _threshold_for_length = {}
 
     def __init__(self, website, config_file_location):
@@ -27,7 +27,7 @@ class Identifier:
         self._website = Website
         self._blacklisted = []
         self._whitelisted = []
-        self._keyword_and_threshold = {}
+        self._keywords_and_thresholds = {}
         self._threshold_for_length = {}
 
         self._website = website
@@ -104,7 +104,7 @@ class Identifier:
             self._whitelisted = data['white_listed_websites']
             self._blacklisted = data['black_listed_websites']
             self._threshold_for_length = data['body_length_threshold']
-            self._keyword_and_threshold = data['keyword_and_threshold']
+            self._keywords_and_thresholds = data['keywords_and_thresholds']
 
     def is_match(self):
         '''
@@ -139,8 +139,8 @@ class Identifier:
         # Loops through all items in the dictionary and if the amount of times any of the keywords shows up
         # in the website is higher than their threshold it breaks the loop and returns true.
         is_higher_than_keyword_threshold = False
-        for key_word in self._keyword_and_threshold:
-            threshold = self._keyword_and_threshold[key_word]
+        for key_word in self._keywords_and_thresholds:
+            threshold = self._keywords_and_thresholds[key_word]
             count_of_keyword = self._get_count_of_word_in_website(key_word)
 
             if count_of_keyword > threshold:
