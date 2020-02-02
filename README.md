@@ -5,7 +5,7 @@ This is a quick script created in Python that can be provided with a JSON config
 - The URL's content includes a keyword (e.g. 'news','cooking' or 'sport') more than a given threshold of times. 
 - The website's body length if over a given character length.
 
-## Requirements
+## Installation
 All requirements are stored in the requirements.txt file. 
 ```bash
 pip install -r requirements.txt
@@ -54,6 +54,9 @@ Example configuration:
     "github.com",
     "bristol.ac.uk"
   ],
-  "max_body_length_threshold": 7000
+  "body_length_threshold": {
+    "min": 7000,
+    "max": "n/a"
+  }
 }
 ```
