@@ -105,7 +105,7 @@ class Identifier:
             self.threshold_for_length = data['body_length_threshold']
             self.keyword_and_threshold = data['keyword_and_threshold']
 
-    def has_met_criteria(self):
+    def is_match(self):
         '''
         Is used to identify if the provided website meets the specification of the provided config.
         :return: boolean on if website identified with config.
