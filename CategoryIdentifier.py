@@ -1,9 +1,11 @@
 import json
 import re
+import sys
+
 import Website
 
 
-class BaseDetector:
+class Identifier:
     '''
     This class reads in a valid json config and takes a website object, it then compares the config
     with the website to identify if the specified website meets the criteria of the config.
@@ -13,11 +15,11 @@ class BaseDetector:
     blacklisted = []
     whitelisted = []
     keyword_and_threshold = {}
-    threshold_for_length = 0
+    threshold_for_length = {}
 
     def __init__(self, website, config_file_location):
         '''
-        Constructor. 
+        Constructor.
         :param website:
         :param config_file_location:
         '''
@@ -25,7 +27,7 @@ class BaseDetector:
         self.blacklisted = []
         self.whitelisted = []
         self.keyword_and_threshold = {}
-        self.threshold_for_length = 0
+        self.threshold_for_length = {}
 
         self.website = website
         self._read_json(config_file_location)
@@ -100,7 +102,7 @@ class BaseDetector:
 
             self.whitelisted = data['white_listed_websites']
             self.blacklisted = data['black_listed_websites']
-            self.threshold_for_length = data['max_body_length_threshold']
+            self.threshold_for_length = data['body_length_threshold']
             self.keyword_and_threshold = data['keyword_and_threshold']
 
     def has_detected(self):
@@ -113,10 +115,19 @@ class BaseDetector:
 
         length_of_body = self._get_length_of_body()
 
-        if length_of_body >= self.threshold_for_length:
-            is_higher_than_length_threshold = True
+        min_body_length = self.threshold_for_length["min"]
+        max_body_length = self.threshold_for_length["max"]
+
+        if max_body_length == "n/a":
+            max_body_length = sys.maxsize
+            
+        if min_body_length == "n/a":
+            min_body_length = 0
+
+        if min_body_length < length_of_body < max_body_length:
+            in_body_length_threshold = True
         else:
-            is_higher_than_length_threshold = False
+            in_body_length_threshold = False
 
         # Loops through all items in the dictionary and if the amount of times any of the keywords shows up
         # in the website is higher than their threshold it breaks the loop and returns true.
@@ -135,7 +146,7 @@ class BaseDetector:
             has_this_website_been_detected = True
         elif is_blacklisted:
             has_this_website_been_detected = False
-        elif is_higher_than_keyword_threshold or is_higher_than_length_threshold:
+        elif is_higher_than_keyword_threshold or in_body_length_threshold:
             has_this_website_been_detected = True
 
         return has_this_website_been_detected

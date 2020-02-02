@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ## Usage 
 The below example details how the website ``http://www.bbc.com`` is compared against a configuration used to identify news websites. 
 ```python
-from WCIT import BaseDetector
+from CategoryIdentifier import Identifier
 from Website import Website
 
 my_website = Website("http://www.bbc.com")
