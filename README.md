@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Usage 
 The below example details how the website ``http://www.bbc.com`` is compared against a configuration used to identify news websites. 
 
-Two objects are required: a ```Website``` object - which is used to store information about a given website (e.g. URL, body text, titles, etc), and an ```Identifier``` object - which is provided with a ```Website``` and a criteria (taking the form of a JSON configuration) and has an ```.is_match()``` method which returns ```True``` if the website meets the criteria of the config or ```False``` if it does not. If any of the above criteria match (Whietlist, Blasklist, or keyword amount **and** length range) then a match will be True.
+Two objects are required: a ```Website``` object - which is used to store information about a given website (e.g. URL, body text, titles, etc), and an ```Identifier``` object - which is provided with a ```Website``` and a criteria (taking the form of a JSON configuration) and has an ```.is_match()``` method which returns ```True``` if the website meets the criteria of the config or ```False``` if it does not. If any of the above criteria match (Whietlist, Blacklist, or keyword amount **and** length range) then a match will be True.
 
 ```python
 from CategoryIdentifier import Identifier
