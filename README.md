@@ -5,7 +5,7 @@ This is a quick script created in Python that can be provided with a JSON config
 - The URL's content includes a keyword (e.g. 'news','cooking' or 'sport') more than a given threshold of times and the website's body length is within a given character length range (e.g. between 0 and 1000, or above 7000)
 
 ## Installation
-All requirements are stored in the requirements.txt file. 
+All requirements are stored in the requirements.txt file or in the virtual environment provided. 
 ```bash
 pip install -r requirements.txt
 ```

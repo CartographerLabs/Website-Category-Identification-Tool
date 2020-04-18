@@ -1,9 +1,7 @@
 import json
 import re
 import sys
-
-import Website
-
+from newspaper import Article
 
 class Identifier:
     '''
@@ -11,26 +9,28 @@ class Identifier:
     with the website to identify if the specified website meets the criteria of the config.
     '''
 
-    _website = Website
+    _article  = Article('')
     _blacklisted = []
     _whitelisted = []
     _keywords_and_thresholds = {}
     _threshold_for_length = {}
 
-    def __init__(self, website, config_file_location):
+    def __init__(self, website_url, config_file_location):
         '''
         Constructor.
         :param website:
         :param config_file_location:
         '''
 
-        self._website = Website
+        self._article = Article(website_url)
+        self._article.download()
+        self._article.parse()
+
         self._blacklisted = []
         self._whitelisted = []
         self._keywords_and_thresholds = {}
         self._threshold_for_length = {}
 
-        self._website = website
         self._read_json(config_file_location)
 
     def _get_count_of_word_in_website(self, keyword):
@@ -39,8 +39,8 @@ class Identifier:
         :param keyword:
         :return: amount of times the keyword is found in the website url and content.
         '''
-        occurances_in_url = len(re.findall(keyword, self._website.website_url))
-        occurances_in_website = self._count_occurances(keyword, self._website.website_content)
+        occurances_in_url = len(re.findall(keyword, self._article.url))
+        occurances_in_website = self._count_occurances(keyword, self._article.html)
 
         return occurances_in_url + occurances_in_website
 
@@ -50,7 +50,7 @@ class Identifier:
         :return: the length of the website's body.
         '''
         total_length = 0
-        for item in self._website.body_text:
+        for item in self._article.text:
             total_length =  total_length + len(item)
 
         return total_length
@@ -76,7 +76,7 @@ class Identifier:
         '''
 
         for website in self._whitelisted:
-            if re.search(website, self._website.website_url):
+            if re.search(website, self._article.url):
                 return True
 
         return False
@@ -88,7 +88,7 @@ class Identifier:
         '''
 
         for website in self._blacklisted:
-            if re.search(website, self._website.website_url):
+            if re.search(website.lower(), self._article.url.lower()):
                 return True
 
         return False
