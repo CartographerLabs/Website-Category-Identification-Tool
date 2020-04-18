@@ -7,10 +7,10 @@ import sqlite3
 
 import Database_Helper
 
-import Topic_Classifier_Utils as tcu
+from Identifier import Topic_Classifier_Utils as tcu
 import tweepy
 
-from CategoryIdentifier import Identifier
+from Identifier.CategoryIdentifier import Identifier
 from Website import Website
 
 consumer_key = "8v7yVO4eYM1FY7mlMPnEr2JjS"

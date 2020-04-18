@@ -1,4 +1,4 @@
-from CategoryIdentifier import Identifier
+from Identifier.CategoryIdentifier import Identifier
 
 news_website_articles = [
     "https://www.theverge.com/2020/1/28/21080720/amazon-product-liability-lawsuits-marketplace-damage-third-party",
@@ -74,7 +74,7 @@ for website in news_website_articles:
 
     print(website)
 
-    my_news_detector = Identifier(website, "newsDetector.json")
+    my_news_detector = Identifier(website, "Identifier/newsDetector.json")
     amount_of_news = my_news_detector._get_count_of_word_in_website("news")
     length_of_body = my_news_detector._get_length_of_body()
 
@@ -98,7 +98,7 @@ for website in non_news:
 
     print(website)
 
-    my_news_detector = Identifier(website, "newsDetector.json")
+    my_news_detector = Identifier(website, "Identifier/newsDetector.json")
     amount_of_news = my_news_detector._get_count_of_word_in_website("news")
     length_of_body = my_news_detector._get_length_of_body()
 

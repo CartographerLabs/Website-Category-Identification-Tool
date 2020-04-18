@@ -16,10 +16,10 @@ The below example details how the website ``http://www.bbc.com`` is compared aga
 Two objects are required: a ```Website``` object - which is used to store information about a given website (e.g. URL, body text, titles, etc), and an ```Identifier``` object - which is provided with a ```Website``` and a criteria (taking the form of a JSON configuration) and has an ```.is_match()``` method which returns ```True``` if the website meets the criteria of the config or ```False``` if it does not. If any of the above criteria match (Whietlist, Blacklist, or keyword amount **and** length range) then a match will be True.
 
 ```python
-from CategoryIdentifier import Identifier
+from Identifier.CategoryIdentifier import Identifier
 
 website_url = "https://www.bbc.co.uk/news/health-51345279"
-my_identifier = Identifier(website_url, "newsDetector.json")
+my_identifier = Identifier(website_url, "Identifier/newsDetector.json")
 
 if my_identifier.is_match():
     print("The website {} is a news website.".format(website_url))
