@@ -1,6 +1,6 @@
 from Identifier.CategoryIdentifier import Identifier
 
-website_url = "https://www.bbc.co.uk/news/health-51345279"
+website_url = "bbc.co.uk/news/health-51345279"
 my_identifier = Identifier(website_url, "Identifier/newsDetector.json")
 
 if my_identifier.is_match():

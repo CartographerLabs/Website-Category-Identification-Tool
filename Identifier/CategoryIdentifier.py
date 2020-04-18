@@ -22,6 +22,10 @@ class Identifier:
         :param config_file_location:
         '''
 
+        # Adds http to a website if it doesn't start with one.
+        if website_url.startswith("http") is False:
+            website_url = "http://"+website_url
+
         self._article = Article(website_url)
         self._article.download()
 
