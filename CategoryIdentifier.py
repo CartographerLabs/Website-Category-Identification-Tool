@@ -24,7 +24,12 @@ class Identifier:
 
         self._article = Article(website_url)
         self._article.download()
-        self._article.parse()
+
+        try:
+            self._article.parse()
+        except:
+            print("Failed parsing website: {}".format(self._article.url))
+            pass
 
         self._blacklisted = []
         self._whitelisted = []

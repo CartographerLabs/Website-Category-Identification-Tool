@@ -22,7 +22,13 @@
     "bbc.com",
     "independent.co.uk",
     "news.sky.com",
-    "express.co.uk"
+    "express.co.uk",
+    "nbcnews.com",
+    "nypost.com",
+    "forbes.com",
+    "wsj.com",
+    "euronews.com"
+
   ],
   "black_listed_websites": [
     "github.com",

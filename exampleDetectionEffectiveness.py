@@ -1,5 +1,4 @@
 from CategoryIdentifier import Identifier
-from Website import Website
 
 news_website_articles = [
     "https://www.theverge.com/2020/1/28/21080720/amazon-product-liability-lawsuits-marketplace-damage-third-party",
@@ -75,23 +74,19 @@ for website in news_website_articles:
 
     print(website)
 
-    try:
-        my_website = Website(website)
-        my_news_detector = Identifier(my_website, "newsDetector.json")
-        amount_of_news = my_news_detector._get_count_of_word_in_website("news")
-        length_of_body = my_news_detector._get_length_of_body()
+    my_news_detector = Identifier(website, "newsDetector.json")
+    amount_of_news = my_news_detector._get_count_of_word_in_website("news")
+    length_of_body = my_news_detector._get_length_of_body()
 
-        news_list_of_total_length.append(length_of_body)
-        news_list_of_self_identifiication.append(amount_of_news)
+    news_list_of_total_length.append(length_of_body)
+    news_list_of_self_identifiication.append(amount_of_news)
 
-        if not my_news_detector.is_match():
-            print("News that doesn't look like news")
-            print(website)
-            print(length_of_body)
-            print(amount_of_news)
-            list_of_news_that_looks_like_not_news.append(website)
-    except:
-        print("Failed")
+    if not my_news_detector.is_match():
+        print("News that doesn't look like news")
+        print(website)
+        print(length_of_body)
+        print(amount_of_news)
+        list_of_news_that_looks_like_not_news.append(website)
 
 
 non_news_list_of_total_length = []
@@ -103,23 +98,19 @@ for website in non_news:
 
     print(website)
 
-    try:
-        my_website = Website(website)
-        my_news_detector = Identifier(my_website, "newsDetector.json")
-        amount_of_news = my_news_detector._get_count_of_word_in_website("news")
-        length_of_body = my_news_detector._get_length_of_body()
+    my_news_detector = Identifier(website, "newsDetector.json")
+    amount_of_news = my_news_detector._get_count_of_word_in_website("news")
+    length_of_body = my_news_detector._get_length_of_body()
 
-        non_news_list_of_total_length.append(length_of_body)
-        non_news_list_of_self_identifiication.append(amount_of_news)
+    non_news_list_of_total_length.append(length_of_body)
+    non_news_list_of_self_identifiication.append(amount_of_news)
 
-        if my_news_detector.is_match():
-            print("Not news that looks like news")
-            print(website)
-            print(length_of_body)
-            print(amount_of_news)
-            list_of_not_news_that_look_like_news.append(website)
-    except:
-        print("Failed")
+    if my_news_detector.is_match():
+        print("Not news that looks like news")
+        print(website)
+        print(length_of_body)
+        print(amount_of_news)
+        list_of_not_news_that_look_like_news.append(website)
 
 
 print("News")
