@@ -9,6 +9,11 @@ All requirements are stored in the requirements.txt file or in the virtual envir
 ```bash
 pip install -r requirements.txt
 ```
+If installing as a library use:
+```bash 
+pip install git+https://github.com/user1342/Website-Category-Identification-Tool.git
+```
+
 
 ## Usage 
 The below example details how the website ``http://www.bbc.com`` is compared against a configuration used to identify news websites. 
