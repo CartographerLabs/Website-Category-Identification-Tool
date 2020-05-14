@@ -19,4 +19,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=["Newspaper3k","tweepy","gensim","spacy","nltk","beautifulsoup4","requests"],
 )

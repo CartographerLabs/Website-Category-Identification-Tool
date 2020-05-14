@@ -1,0 +1,55 @@
+{
+  "keywords_and_thresholds": {
+    "news": 8
+  },
+  "white_listed_websites": [
+    "news.yahoo.co",
+    "hindustantimes.co",
+    "thehindu.co",
+    "theverge.co",
+    "cnn.co",
+    "nytimes.co",
+    "foxnews.co",
+    "dailymail.co",
+    "washingtonpost.co",
+    "theguardian.co",
+    "abcnews.go.co",
+    "usatoday.co",
+    "thedailybeast.co",
+    "nationalgeographic.co",
+    "euronews.co",
+    "reuters.co",
+    "bbc.co",
+    "bbc.co",
+    "independent.co",
+    "independent.co",
+    "news.sky.co",
+    "express.co",
+    "nbcnews.co",
+    "nypost.co",
+    "forbes.co",
+    "wsj.co",
+    "euronews.co"
+
+  ],
+  "black_listed_websites": [
+    "github.co",
+    "github.co",
+    "bristol.ac.uk",
+    "twitter.co",
+    "twitter.co",
+    "t.co",
+    "facebook.co",
+    "facebook.co",
+    "youtube.co",
+    "youtube.co",
+    "google.co",
+    "google.co",
+    "wikipedia.org",
+    "medium.co"
+  ],
+  "body_length_threshold": {
+    "min": 1000,
+    "max": "n/a"
+  }
+}
